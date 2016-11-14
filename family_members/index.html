@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Family Members Exercise</title>
+    <script src="../js/angular.js"></script>
+    <script src="../js/angular-ui-router.js"></script>
+    <script src="family_members.js"></script>
+    <script type="text/javascript" src="family_members.js">
+
+    </script>
+    <style>
+    .active {
+      background-color: yellow;
+      color: black;
+    }
+    </style>
+  </head>
+  <body ng-app="family-members">
+    <nav>
+      <a ui-sref="home" ui-sref-active="active">Home</a>
+      <a ui-sref="parents" ui-sref-active="active">Parents</a>
+      <a ui-sref="siblings" ui-sref-active="active">Siblings</a>
+      <a ui-sref="pets" ui-sref-active="active">Pets</a>
+    </nav>
+    <ui-view></ui-view>
+  </body>
+</html>
