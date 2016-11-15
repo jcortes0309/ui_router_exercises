@@ -2,8 +2,15 @@
 
 {{ page }}
 
-<h1>{{ page.title }}</h1>
-<hr>
-<p>
-  {{ page.content }}
-</p>
+<div ng-if="page">
+  <h1>{{ page.title }}</h1>
+  <hr>
+  <p>
+    {{ page.content }}
+  </p>
+</div>
+
+<div class="not-found">
+  <h2>The {{ pageName }} page does not exist yet!</h2>
+  <button>Create it now</button>
+</div>
