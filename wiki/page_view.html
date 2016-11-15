@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
-{{ page }}
+<!-- {{ page }} -->
 
-<div ng-if="page">
+<div ng-show="page">
   <h1>{{ page.title }}</h1>
   <hr>
   <p>
@@ -11,7 +11,6 @@
   <button ng-click="edit()">Edit page</button>
 </div>
 
-<!-- <div class="not-found">
-  <h2>The page does not exist yet!</h2>
-  <button ng-click="">Create it now</button>
-</div> -->
+<div ng-hide="page">
+  <h2>The {{ pageName }} page does not exist yet! <small><a ui-sref="page_edit({ page_name: pageName })">Create it now</a></small></h2>
+</div>

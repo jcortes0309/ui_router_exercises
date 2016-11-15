@@ -4,7 +4,9 @@
 <p>
   This Wiki contains information on the following topics:
 </p>
+
 <ul>
-  <li><a ui-sref="page_view({page_name: 'HTML'})">HTML</a></li>
-  <li><a ui-sref="page_view({page_name: 'Python'})">Python</a></li>
+  <li ng-repeat=" page in pagesTitleArray | orderBy:'title' ">
+    <a ui-sref="page_view({page_name: '{{ page.title }}'})">{{ page.title }}</a>
+  </li>
 </ul>

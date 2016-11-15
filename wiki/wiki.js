@@ -12,7 +12,17 @@ var app = angular.module("wiki", ['ui.router']);
 
 
 app.controller("HomeController", function($scope) {
-  // controller code
+  // debugger
+  $scope.pagesTitleArray = [];
+  console.log("var pages = ", pages);
+
+  for (var title in pages) {
+    var page = pages[title];
+    console.log("Page is: ", pages[title]);
+    $scope.pagesTitleArray.push(page);
+  }
+
+  console.log("Pages title array: ", $scope.pagesTitleArray);
 });
 
 app.controller("PageViewController", function($scope, $stateParams, $state) {
@@ -29,16 +39,22 @@ app.controller("PageViewController", function($scope, $stateParams, $state) {
 
 app.controller("PageEditController", function($scope, $stateParams, $state) {
   $scope.pageName = $stateParams.page_name;
-  console.log($scope.pageName);
+  // console.log($scope.pageName);
   $scope.page = pages[$scope.pageName];
+  if (!($scope.pageName in pages)) {
+    var page = new WikiPage($scope.pageName, "");
+    pages[$scope.pageName] = page;
+    $scope.page = page;
+  }
 
-  console.log($scope.page);
+  // console.log($scope.page);
 
-  $scope.done = function() {
-    pages[$scope.pageName].content = $scope.page.content;
-    console.log("Clicked the done button");
-    $state.go("page_view", { page_name: $scope.pageName });
-  };
+  // $scope.done = function() {
+  //   pages[$scope.pageName].title = $scope.pageName;
+  //   pages[$scope.pageName].content = $scope.page.content;
+  //   console.log("Clicked the done button");
+  //   $state.go("page_view", { page_name: $scope.pageName });
+  // };
 });
 
 // app.controller("PagesController", function($scope, $stateParams) {
@@ -54,7 +70,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state({
       name: "home",
       url: "/",
-      templateUrl: "home.html"
+      templateUrl: "home.html",
+      controller: "HomeController"
     })
     .state({
       name: "page_view",
